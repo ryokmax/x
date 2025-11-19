@@ -1,13 +1,14 @@
-name: Build golang Docker Image
+name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ golang ]
+    branches: [ main ]
     paths:
       - 'Dockerfile'
-      - 'main.go'
+      - 'app.js'
+      - 'package.json'
   pull_request:
-    branches: [ golang ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -37,10 +38,10 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/goplen:latest
+            ghcr.io/${{ github.repository_owner }}/gfdgdfg:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
-            org.opencontainers.image.description=HTTP Server
+            org.opencontainers.image.description=XHTTP Server
             org.opencontainers.image.licenses=MIT
           cache-from: type=gha
           cache-to: type=gha,mode=max
